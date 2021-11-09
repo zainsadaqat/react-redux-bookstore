@@ -22,7 +22,8 @@
     "react-hooks/rules-of-hooks": "off",
     "import/no-extraneous-dependencies": "off",
     "import/extensions": "off",
-    "import/no-cycle": "off"
+    "import/no-cycle": "off",
+    "comma-dangle": "off"
   },
   "ignorePatterns": ["dist/", "build/"]
 }

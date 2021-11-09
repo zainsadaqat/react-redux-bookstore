@@ -1,11 +1,11 @@
-import BookList from './BookList';
-import CreateNewBook from './CreateNewBook';
+import BooksList from './BooksList';
+import CreateBook from './CreatBook';
 
 const Books = () => (
-  <section>
-    <BookList />
-    <CreateNewBook />
-  </section>
+  <>
+    <BooksList />
+    <CreateBook />
+  </>
 );
 
 export default Books;

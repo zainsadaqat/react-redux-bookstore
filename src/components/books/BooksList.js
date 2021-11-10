@@ -1,14 +1,20 @@
-const Books = () => (
-  <ul>
-    <li>
-      <p>Seven Habits of Highly Effective People</p>
-      <p>Unknown</p>
-    </li>
-    <li>
-      <p>Rich Dad, Poor Dad</p>
-      <p>Unknown</p>
-    </li>
-  </ul>
-);
+import { useSelector } from 'react-redux';
+import SingleBook from './SingleBook';
 
-export default Books;
+const BooksList = () => {
+  const books = useSelector((state) => state.booksReducer);
+  return (
+    <ul>
+      {books.map((book) => (
+        <SingleBook
+          key={book.id}
+          id={book.id}
+          title={book.title}
+          author={book.author}
+        />
+      ))}
+    </ul>
+  );
+};
+
+export default BooksList;

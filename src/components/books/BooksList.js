@@ -7,8 +7,8 @@ const BooksList = () => {
     <ul>
       {books.map((book) => (
         <SingleBook
-          key={book.id}
-          id={book.id}
+          key={book.item_id}
+          id={book.item_id}
           title={book.title}
           author={book.author}
         />

@@ -10,7 +10,7 @@ const SingleBook = (props) => {
     dispatch(removeBook(id));
   };
   return (
-    <>
+    <article>
       <li key={id}>
         Title:
         {title}, Author:
@@ -19,7 +19,7 @@ const SingleBook = (props) => {
       <button type="button" onClick={removeBookFromStore}>
         Remove {title}
       </button>
-    </>
+    </article>
   );
 };
 

@@ -1,48 +1,76 @@
 import axios from 'axios';
 
-export const ENDPOINT =
-  'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/OWE8y7l6VJxjIC8WGkOP/books';
-
 const ADD_BOOK = 'bookStore/books/ADD_BOOK';
 const REMOVE_BOOK = 'bookStore/books/REMOVE_BOOK';
+const LOAD_BOOKS = 'bookStore/books/LOAD_BOOKS';
+const APP_IDENTIFIER = 'OWE8y7l6VJxjIC8WGkOP';
 
 const initialState = [];
 
-export const addBook = (payload) => {
+export const addBook = (payload) => async (dispatch) => {
   const newBook = {
-    item_id: payload.item_id,
-    title: payload.title,
-    category: payload.category,
+    item_id: `${payload.id}`,
+    title: `${payload.name}&&&${payload.author}`,
+    category: `${payload.category}`,
   };
-  return async (dispatch) => {
-    await axios.post(ENDPOINT, newBook);
-    dispatch({ type: ADD_BOOK, payload });
-  };
+  await axios.post(
+    `https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/${APP_IDENTIFIER}/books`,
+    newBook
+  );
+  dispatch({
+    type: ADD_BOOK,
+    payload,
+  });
 };
 
-export const removeBook = (id) => {
-  const removeBook = {
-    item_id: id,
+export const removeBook = (payload) => async (dispatch) => {
+  const body = {
+    item_id: payload,
   };
-
-  return async (dispatch) => {
-    await axios.delete(
-      `https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/OWE8y7l6VJxjIC8WGkOP/books/${id}`,
-      removeBook
-    );
-    dispatch({ type: REMOVE_BOOK, removeBook });
-  };
+  await axios.delete(
+    `https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/${APP_IDENTIFIER}/books/${payload}`,
+    body
+  );
+  dispatch({
+    type: REMOVE_BOOK,
+    payload,
+  });
 };
 
-const booksReducer = (state = initialState, action) => {
+export const loadBooks = () => async (dispatch) => {
+  const response = await axios.get(
+    `https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/${APP_IDENTIFIER}/books`
+  );
+  const array = [];
+  const keys = Object.keys(response.data);
+  const values = Object.values(response.data);
+  values.forEach((value, index) => {
+    const obj = value[0];
+    const splitArray = obj.title.split('&&&');
+    const book = {
+      name: splitArray[0],
+      author: splitArray[1],
+      id: keys[index],
+    };
+    array.push(book);
+  });
+  dispatch({
+    type: LOAD_BOOKS,
+    payload: array,
+  });
+};
+
+const reducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_BOOK:
       return [...state, action.payload];
     case REMOVE_BOOK:
-      return state.filter((book) => book.id !== action.item_id);
+      return state.filter((book) => book.id !== action.payload);
+    case LOAD_BOOKS:
+      return action.payload;
     default:
       return state;
   }
 };
 
-export default booksReducer;
+export default reducer;

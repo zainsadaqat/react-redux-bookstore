@@ -1,5 +1,7 @@
 import axios from 'axios';
-import { ENDPOINT } from '../../App';
+
+export const ENDPOINT =
+  'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/OWE8y7l6VJxjIC8WGkOP/books';
 
 const ADD_BOOK = 'bookStore/books/ADD_BOOK';
 const REMOVE_BOOK = 'bookStore/books/REMOVE_BOOK';

@@ -1,0 +1,19 @@
+.navbar,
+.navbar-menu {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-menu > li {
+  margin-left: 10px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.div1 {
+  width: 4.25rem;
+  height: 4.25rem;
+  border-radius: 50%;
+  border: 5px solid mediumslateblue;
+  border-left: 5px solid mediumspringgreen;
+  transform: rotate(40deg);
+}

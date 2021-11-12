@@ -1,5 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import './Navbar.css';
+import { userIcon } from '../../assets/userIcon.svg';
 
 const Navbar = () => {
   const links = [
@@ -16,16 +18,21 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="navBar">
-      <ul>
-        {links.map((link) => (
-          <li key={link.id}>
-            <NavLink to={link.path} activeClassName="active-link" exact>
-              {link.text}
-            </NavLink>
-          </li>
-        ))}
-      </ul>
+    <nav>
+      <section className="navbar">
+        <h2>BookStore CMS</h2>
+        <div className="div1" />
+        <ul className="navbar-menu">
+          {links.map((link) => (
+            <li key={link.id}>
+              <NavLink to={link.path} activeClassName="active-link" exact>
+                {link.text}
+              </NavLink>
+            </li>
+          ))}
+        </ul>
+      </section>
+      <image src={userIcon} alt="logo" />
     </nav>
   );
 };

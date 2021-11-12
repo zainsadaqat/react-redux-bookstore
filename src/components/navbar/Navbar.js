@@ -1,16 +1,32 @@
-import { Link } from 'react-router-dom';
+import React from 'react';
+import { NavLink } from 'react-router-dom';
 
-const Navbar = () => (
-  <nav>
-    <ul>
-      <li>
-        <Link to="/">Books</Link>
-      </li>
-      <li>
-        <Link to="/categories">Categories</Link>
-      </li>
-    </ul>
-  </nav>
-);
+const Navbar = () => {
+  const links = [
+    {
+      id: 1,
+      path: '/Books',
+      text: 'Books',
+    },
+    {
+      id: 2,
+      path: '/Categories',
+      text: 'Categories',
+    },
+  ];
 
+  return (
+    <nav className="navBar">
+      <ul>
+        {links.map((link) => (
+          <li key={link.id}>
+            <NavLink to={link.path} activeClassName="active-link" exact>
+              {link.text}
+            </NavLink>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  );
+};
 export default Navbar;

@@ -1,12 +1,27 @@
+.nav,
 .navbar,
 .navbar-menu {
   display: flex;
   align-items: center;
+  text-transform: uppercase;
+  font-family: 'Montserrat', sans-serif;
 }
 
-.navbar-menu > li {
-  margin-left: 10px;
-  font-family: 'Montserrat', sans-serif;
+.logo {
+  font-weight: 700;
+}
+
+.nav {
+  justify-content: space-between;
+}
+
+.navbar-menu {
+  margin: 1.125rem 2.563rem;
+}
+
+.navbar-menu > li > a {
+  margin-left: 1em;
+  color: #121212;
 }
 
 .div1 {

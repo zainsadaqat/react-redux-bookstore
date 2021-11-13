@@ -12,7 +12,7 @@
 
 .add-new-book {
   margin: 2em 0 0.25em;
-  font-family: Montserrat;
+  font-family: Montserrat, sans-serif;
   font-size: 1.25rem;
   font-weight: bold;
   font-stretch: normal;
@@ -43,7 +43,7 @@
 
 .add-book-btn {
   margin-left: auto;
-  font-family: RobotoSlab;
+  font-family: 'Roboto Slab', serif;
   font-size: 0.813rem;
   font-weight: bold;
   font-style: normal;

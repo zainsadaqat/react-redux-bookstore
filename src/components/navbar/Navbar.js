@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import './Navbar.css';
-import { userIcon } from '../../assets/userIcon.svg';
+import { ImUser } from 'react-icons/im';
 
 const Navbar = () => {
   const links = [
@@ -18,21 +18,20 @@ const Navbar = () => {
   ];
 
   return (
-    <nav>
+    <nav className="nav">
       <section className="navbar">
-        <h2>BookStore CMS</h2>
-        <div className="div1" />
+        <h2 className="logo">BookStore CMS</h2>
         <ul className="navbar-menu">
           {links.map((link) => (
             <li key={link.id}>
-              <NavLink to={link.path} activeClassName="active-link" exact>
+              <NavLink to={link.path} exact>
                 {link.text}
               </NavLink>
             </li>
           ))}
         </ul>
       </section>
-      <image src={userIcon} alt="logo" />
+      <ImUser />
     </nav>
   );
 };

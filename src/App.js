@@ -8,21 +8,21 @@ import Navbar from './components/navbar/Navbar';
 import './App.css';
 
 const App = () => (
-  <section className="container">
-    <Router>
-      <Provider store={store}>
+  <Router>
+    <Provider store={store}>
+      <section className="container">
         <Navbar />
-        <Switch>
-          <Route exact path="/Books">
-            <Books />
-          </Route>
-          <Route exact path="/Categories">
-            <Categories />
-          </Route>
-        </Switch>
-      </Provider>
-    </Router>
-  </section>
+      </section>
+      <Switch>
+        <Route exact path="/Books">
+          <Books />
+        </Route>
+        <Route exact path="/Categories">
+          <Categories />
+        </Route>
+      </Switch>
+    </Provider>
+  </Router>
 );
 
 export default App;

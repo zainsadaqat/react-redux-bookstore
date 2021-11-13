@@ -25,7 +25,8 @@
     "import/no-cycle": "off",
     "comma-dangle": "off",
     "no-trailing-spaces": "off",
-    "react/jsx-one-expression-per-line": "off"
+    "react/jsx-one-expression-per-line": "off",
+    "object-curly-newline": "off"
   },
   "ignorePatterns": ["dist/", "build/"]
 }

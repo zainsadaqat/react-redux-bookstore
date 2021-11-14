@@ -3,11 +3,10 @@ import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 
 import { removeBook } from '../redux/books/books';
+import './Book.css';
 
 const Book = (props) => {
-  const {
-    title, category, author, progress, currentChapter, id,
-  } = props;
+  const { title, category, author, progress, currentChapter, id } = props;
 
   const dispatch = useDispatch();
 
@@ -16,44 +15,59 @@ const Book = (props) => {
   };
 
   return (
-    <article className="book">
-      <div className="bookLeft">
-        <div className="bookData">
-          <h3>{title}</h3>
-          <p className="author">{author}</p>
+    <section className="book-card">
+      <article className="left-side">
+        <div className="left">
           <p className="category">{category}</p>
+          <h2 className="title">{title}</h2>
+          <p className="author">{author}</p>
+          <div className="btn-section">
+            <button type="button" className="btn">
+              Comment
+            </button>
+            <div className="sm-line" />
+            <button type="button" className="btn" onClick={removeHandler}>
+              Remove
+            </button>
+            <div className="sm-line" />
+            <button type="button" className="btn">
+              Edit
+            </button>
+          </div>
         </div>
-        <div className="bookActions">
-          <button type="button">Comments</button>
-          <button type="button" onClick={removeHandler}>Remove</button>
-          <button type="button">Edit</button>
+        <div className="center">
+          <div className="center-in">
+            <div className="circle" />
+            <div className="data">
+              <p className="progress">{progress}%</p>
+              <p className="completed">completed</p>
+            </div>
+          </div>
         </div>
+      </article>
+      <div className="lg-line" />
+      <div className="right">
+        <div className="cc-heading">current chapter</div>
+        <div className="current-chapter">{currentChapter}</div>
+        <button type="button" className="update-btn">
+          UPDATE PROGRESS
+        </button>
       </div>
-      <div className="bookCenter">
-        <p>
-          {progress}
-          % completed
-        </p>
-      </div>
-      <div className="bookRight">
-        <p>CURRENT CHAPTER</p>
-        <p>{currentChapter}</p>
-        <button type="button">UPDATE PROGRESS</button>
-      </div>
-    </article>
+    </section>
   );
 };
 
 Book.propTypes = {
   title: PropTypes.string.isRequired,
   category: PropTypes.string,
-  author: PropTypes.string.isRequired,
+  author: PropTypes.string,
   progress: PropTypes.number,
   currentChapter: PropTypes.string,
   id: PropTypes.string.isRequired,
 };
 
 Book.defaultProps = {
+  author: 'Zain Sadaqat',
   category: 'Drama',
   progress: 50,
   currentChapter: 'Testing',

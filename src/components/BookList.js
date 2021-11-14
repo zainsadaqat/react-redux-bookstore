@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { loadBooks } from '../redux/books/books';
 import Book from './Book';
+import './BookList.css';
 
 const List = () => {
   const dispatch = useDispatch();
@@ -13,7 +14,7 @@ const List = () => {
   }, []);
 
   return (
-    <ul id="bookList">
+    <ul id="bookList" className="books-container">
       {books.map((book) => (
         <li className="book" key={book.id}>
           <Book

@@ -1,5 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import './Navbar.css';
+import { ImUser } from 'react-icons/im';
 
 const Navbar = () => {
   const links = [
@@ -16,16 +18,20 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="navBar">
-      <ul>
-        {links.map((link) => (
-          <li key={link.id}>
-            <NavLink to={link.path} activeClassName="active-link" exact>
-              {link.text}
-            </NavLink>
-          </li>
-        ))}
-      </ul>
+    <nav className="nav">
+      <section className="navbar">
+        <h2 className="logo">BookStore CMS</h2>
+        <ul className="navbar-menu">
+          {links.map((link) => (
+            <li key={link.id}>
+              <NavLink to={link.path} exact>
+                {link.text}
+              </NavLink>
+            </li>
+          ))}
+        </ul>
+      </section>
+      <ImUser />
     </nav>
   );
 };

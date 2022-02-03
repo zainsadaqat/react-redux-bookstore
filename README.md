@@ -5,7 +5,7 @@
 ## Built With
 
 - HTML, CSS
-- React, Redux, React Router
+- React, Redux, Redux Thunk, React Router
 
 ## Steps to run the project in your local machine
 

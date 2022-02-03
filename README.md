@@ -1,6 +1,6 @@
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
-# Redux BookStore
+# React Redux BookStore
 
 ## Built With
 
